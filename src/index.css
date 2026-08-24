@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  --leaf-900: #173C2D;
+  --leaf-700: #2B6E4F;
+  --leaf-500: #52B788;
+  --wheat-100: #FBF7ED;
+  --wheat-200: #F3ECDA;
+  --soil-600: #8A5A34;
+  --soil-800: #5B3A21;
+  --amber-500: #E38A1C;
+  --ink-900: #20261F;
+  --ink-600: #4C5548;
+  --line: #E1D9C4;
+  --radius: 16px;
+  --shadow: 0 10px 30px -12px rgba(23, 60, 45, 0.16);
+  --shadow-sm: 0 2px 8px 0 rgba(23, 60, 45, 0.06);
+  --shadow-md: 0 8px 24px -6px rgba(23, 60, 45, 0.12);
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    min-height: 100dvh;
+    touch-action: manipulation;
+    background-color: var(--wheat-100);
+    color: var(--ink-900);
+    font-family: 'Noto Sans', 'Noto Sans Bengali', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Baloo 2', 'Noto Sans Bengali', 'Noto Sans Devanagari', system-ui, sans-serif;
+  }
+
+  /* Indic Font Adjustments based on language */
+  html[lang="bn"] {
+    font-family: 'Noto Sans Bengali', 'Hind Siliguri', 'Noto Sans', system-ui, sans-serif;
+  }
+  html[lang="bn"] h1,
+  html[lang="bn"] h2,
+  html[lang="bn"] h3,
+  html[lang="bn"] h4,
+  html[lang="bn"] .font-heading {
+    font-family: 'Baloo 2', 'Noto Sans Bengali', 'Hind Siliguri', system-ui, sans-serif;
+  }
+
+  html[lang="hi"], html[lang="mr"] {
+    font-family: 'Noto Sans Devanagari', 'Hind', 'Noto Sans', system-ui, sans-serif;
+  }
+  html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3,
+  html[lang="mr"] h1, html[lang="mr"] h2, html[lang="mr"] h3 {
+    font-family: 'Baloo 2', 'Noto Sans Devanagari', 'Hind', system-ui, sans-serif;
+  }
+
+  html[lang="en"] {
+    font-family: 'Noto Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Guaranteed touch targets for rural accessibility */
+  .touch-target {
+    min-width: 48px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+
+  /* Warm agri card style */
+  .agri-card {
+    background-color: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .agri-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  /* Visible focus outlines for keyboard accessibility */
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--leaf-700);
+    outline-offset: 2px;
+  }
+}
+
+/* Linear laser scan effect without glow/blur */
+@keyframes laserSweepClean {
+  0%, 100% { top: 6%; }
+  50% { top: 90%; }
+}
+
+.animate-laser-scan {
+  animation: laserSweepClean 2.2s ease-in-out infinite;
+}
+
+/* Hide scrollbar for clean appearance */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

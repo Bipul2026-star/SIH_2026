@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#4ade80" />
+    </linearGradient>
+  </defs>
+  <!-- Background Shield -->
+  <path d="M50 5 L85 20 C85 55 50 88 50 95 C50 88 15 55 15 20 Z" fill="url(#shieldGrad)" stroke="#14532d" stroke-width="3"/>
+  <!-- Leaf Inside -->
+  <path d="M50 25 C65 25 72 40 70 58 C60 62 48 58 42 50 C38 42 42 30 50 25 Z" fill="url(#leafGrad)" />
+  <path d="M50 25 C35 25 28 40 30 58 C40 62 52 58 58 50" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Central Stem -->
+  <path d="M50 28 Q50 60 50 72" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <!-- Small Star / Cross of Protection -->
+  <circle cx="50" cy="80" r="4" fill="#fbbf24"/>
+</svg>

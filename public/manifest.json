@@ -1,0 +1,44 @@
+{
+  "name": "Crop Rakshak - ফসল রক্ষক | पीक रक्षक",
+  "short_name": "Crop Rakshak",
+  "description": "AI-powered crop disease & pest detection for Indian farmers with voice guidance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#052e16",
+  "theme_color": "#15803d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Take Photo",
+      "short_name": "Camera",
+      "url": "/?action=camera",
+      "description": "Quickly take a photo of your crop"
+    },
+    {
+      "name": "Regional Alerts",
+      "short_name": "Alerts",
+      "url": "/?action=alerts",
+      "description": "View crop disease alerts in your area"
+    }
+  ],
+  "categories": ["agriculture", "productivity", "utilities"]
+}
