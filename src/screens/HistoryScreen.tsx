@@ -39,19 +39,19 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
   });
 
   return (
-    <div className="flex flex-col gap-4 pb-28 animate-in fade-in duration-200">
+    <div className="w-full max-w-2xl mx-auto space-y-4 pb-24 sm:pb-16 animate-in fade-in duration-200">
       {/* Top Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-2xl bg-emerald-950 border border-emerald-700/60 flex items-center justify-center text-emerald-400">
+        <div className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-2xl bg-[#E4F3EA] border border-[#B7E4C7] flex items-center justify-center text-[#2B6E4F] shadow-sm">
             <History className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-base font-extrabold text-white">
+            <h2 className="font-heading text-lg sm:text-xl font-extrabold text-[#173C2D]">
               {t('historyTitle', 'Past Crop Scans')}
             </h2>
-            <p className="text-xs text-stone-400">
-              {historyItems.length} টি সংরক্ষিত পরীক্ষা
+            <p className="text-xs text-[#4C5548]">
+              {historyItems.length} টি সংরক্ষিত পরীক্ষা (Saved Scans)
             </p>
           </div>
         </div>
@@ -60,8 +60,8 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
           <button
             type="button"
             onClick={handleClear}
-            className="touch-target w-10 h-10 rounded-2xl bg-stone-900 border border-stone-800 text-stone-400 hover:text-red-400 flex items-center justify-center"
-            title={t('clearHistory')}
+            className="touch-target w-10 h-10 rounded-2xl bg-[#F3ECDA] hover:bg-[#FBE1DC] border border-[#E1D9C4] text-[#4C5548] hover:text-[#C0431F] flex items-center justify-center transition-colors shadow-sm"
+            title={t('clearHistory', 'Clear History')}
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -70,27 +70,27 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
 
       {/* Search Input Bar */}
       <div className="relative">
-        <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <Search className="w-4 h-4 text-[#4C5548] absolute left-3.5 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={t('historySearchPlaceholder', 'Search crop or disease...')}
-          className="w-full h-12 pl-10 pr-4 rounded-2xl bg-stone-900 border border-stone-800 text-white placeholder-stone-500 text-xs focus:outline-none focus:border-emerald-500 transition-colors"
+          className="w-full h-12 pl-10 pr-4 rounded-2xl bg-white border border-[#E1D9C4] text-[#20261F] placeholder-[#4C5548]/70 text-xs sm:text-sm focus:outline-none focus:border-[#2B6E4F] shadow-sm transition-colors"
         />
       </div>
 
       {/* List of History Items */}
       {filteredItems.length === 0 ? (
-        <div className="py-12 px-4 text-center rounded-3xl bg-stone-900/60 border border-stone-800 space-y-4">
-          <div className="w-16 h-16 rounded-3xl bg-emerald-950/60 border border-emerald-700/40 text-emerald-400 mx-auto flex items-center justify-center">
-            <History className="w-8 h-8 opacity-60" />
+        <div className="py-12 px-4 text-center rounded-3xl bg-white border border-[#E1D9C4] shadow-sm space-y-4">
+          <div className="w-16 h-16 rounded-3xl bg-[#E4F3EA] border border-[#B7E4C7] text-[#2B6E4F] mx-auto flex items-center justify-center">
+            <History className="w-8 h-8 opacity-80" />
           </div>
           <div>
-            <h3 className="font-bold text-sm text-white">
+            <h3 className="font-heading font-bold text-base text-[#173C2D]">
               {t('noHistoryTitle', 'No scan records found')}
             </h3>
-            <p className="text-xs text-stone-400 mt-1 max-w-xs mx-auto">
+            <p className="text-xs text-[#4C5548] mt-1 max-w-xs mx-auto">
               {t('noHistoryDesc', 'Take a photo of your crop to start your first diagnosis!')}
             </p>
           </div>
@@ -100,7 +100,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
               speechService.playChime('click');
               onNavigate('camera');
             }}
-            className="touch-target px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg inline-flex items-center gap-2"
+            className="touch-target px-6 py-3 rounded-2xl bg-[#2B6E4F] hover:bg-[#173C2D] text-white font-bold text-xs sm:text-sm shadow-md inline-flex items-center gap-2 active:scale-95 transition-transform"
           >
             <Camera className="w-4 h-4" />
             <span>{t('cameraCtaTitle', 'Take Crop Photo')}</span>
@@ -124,11 +124,11 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
                   onSelectHistoryItem(item.result);
                 }}
                 onKeyDown={(e) => e.key === 'Enter' && onSelectHistoryItem(item.result)}
-                className="bg-stone-900/95 border-2 border-stone-800 hover:border-emerald-500/60 rounded-3xl p-3.5 text-white shadow-lg flex items-center justify-between gap-3 cursor-pointer active:scale-[0.98] transition-all"
+                className="bg-white border border-[#E1D9C4] hover:border-[#2B6E4F]/60 rounded-3xl p-4 text-[#20261F] shadow-sm hover:shadow-agri flex items-center justify-between gap-3 cursor-pointer active:scale-[0.99] transition-all"
               >
-                {/* Thumbnail */}
-                <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden bg-stone-800 border border-stone-700 flex-shrink-0">
+                {/* Thumbnail & Info */}
+                <div className="flex items-center gap-3.5">
+                  <div className="w-14 h-14 rounded-2xl overflow-hidden bg-[#F3ECDA] border border-[#E1D9C4] flex-shrink-0">
                     <img
                       src={item.imageUrl}
                       alt="Crop thumbnail"
@@ -136,18 +136,18 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
                     />
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+                    <div className="flex items-center gap-1.5 text-xs text-[#2B6E4F] font-bold">
                       <span>🌱 {t(item.cropNameKey)}</span>
-                      <span className="text-stone-500">•</span>
-                      <span className="text-stone-400 font-mono text-[10px]">
-                        {item.confidence}%
+                      <span className="text-[#E1D9C4]">•</span>
+                      <span className="text-[#4C5548] font-mono text-[10px]">
+                        {item.confidence}% Conf
                       </span>
                     </div>
-                    <div className="text-sm font-extrabold text-white leading-tight mt-0.5">
+                    <div className="font-heading text-sm sm:text-base font-extrabold text-[#173C2D] leading-tight mt-0.5">
                       {t(item.labelKey)}
                     </div>
-                    <div className="flex items-center gap-1 text-[10px] text-stone-500 mt-1">
-                      <Calendar className="w-3 h-3" />
+                    <div className="flex items-center gap-1 text-[11px] text-[#4C5548] mt-1 font-medium">
+                      <Calendar className="w-3.5 h-3.5 text-[#8A5A34]" />
                       <span>{dateStr}</span>
                     </div>
                   </div>
@@ -156,7 +156,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
                 {/* Risk Badge and Arrow */}
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <RiskBadge level={item.riskLevel} size="sm" showIcon={false} />
-                  <ChevronRight className="w-4 h-4 text-stone-500" />
+                  <ChevronRight className="w-4 h-4 text-[#4C5548]" />
                 </div>
               </div>
             );

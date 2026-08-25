@@ -10,12 +10,10 @@ import {
   FileText,
   Bug,
   Download,
-  Calendar,
   Volume2,
   CheckCircle2,
   AlertTriangle,
   Wind,
-  Layers,
   Sparkles,
 } from 'lucide-react';
 import { speechService } from '../services/speechService';

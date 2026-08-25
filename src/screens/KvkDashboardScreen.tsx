@@ -7,11 +7,8 @@ import {
   Activity,
   Send,
   CheckCircle,
-  Eye,
   X,
-  Volume2,
   Users,
-  MapPin,
   TrendingUp,
 } from 'lucide-react';
 import { speechService } from '../services/speechService';

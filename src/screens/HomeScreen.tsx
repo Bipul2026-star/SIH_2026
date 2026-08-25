@@ -2,17 +2,10 @@ import React, { useRef, useState } from 'react';
 import {
   Camera,
   Upload,
-  History,
   AlertTriangle,
   ChevronRight,
   Sparkles,
   Volume2,
-  Activity,
-  Droplets,
-  CloudSun,
-  MapPin,
-  FileText,
-  Bug,
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import type { ScreenType, QuickTestPreset, AgriFeatureType } from '../types';
