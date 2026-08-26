@@ -6,6 +6,7 @@ import { BottomNav } from './components/BottomNav';
 import { OfflineBanner } from './components/OfflineBanner';
 import { HelpModal } from './components/HelpModal';
 import { SettingsModal } from './components/SettingsModal';
+import { AuthModal } from './components/AuthModal';
 
 import { GatewayScreen } from './screens/GatewayScreen';
 import { HomeScreen } from './screens/HomeScreen';
@@ -22,6 +23,8 @@ import { storageService } from './services/storageService';
 import { speechService } from './services/speechService';
 import { Sparkles } from 'lucide-react';
 
+const USER_STORAGE_KEY = 'crop_rakshak_user';
+
 const MainApp: React.FC = () => {
   const { t, language } = useLanguage();
 
@@ -35,6 +38,42 @@ const MainApp: React.FC = () => {
   // Modals
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+  // Optional User Auth State (Guest access by default for farmers)
+  const [currentUser, setCurrentUser] = useState<{ name: string; role: 'farmer' | 'officer' } | null>(() => {
+    try {
+      const saved = localStorage.getItem(USER_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleLoginSuccess = (name: string, role: 'farmer' | 'officer') => {
+    const user = { name, role };
+    setCurrentUser(user);
+    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+    if (role === 'officer') {
+      setCurrentScreen('kvk-dash');
+    }
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem(USER_STORAGE_KEY);
+  };
+
+  const handleOpenLogin = () => {
+    setAuthMode('login');
+    setIsAuthModalOpen(true);
+  };
+
+  const handleOpenRegister = () => {
+    setAuthMode('register');
+    setIsAuthModalOpen(true);
+  };
 
   // Handler for capturing or uploading photo
   const handleProcessScan = async (imageDataUrl: string, presetId?: string) => {
@@ -72,7 +111,17 @@ const MainApp: React.FC = () => {
     return (
       <div className="min-h-screen bg-[#173C2D] text-[#FBF7ED] font-sans antialiased selection:bg-[#52B788] selection:text-[#173C2D]">
         <OfflineBanner />
-        <GatewayScreen onSelectDoor={(screen) => setCurrentScreen(screen)} />
+        <GatewayScreen
+          onSelectDoor={(screen) => setCurrentScreen(screen)}
+          onOpenLogin={handleOpenLogin}
+          onOpenRegister={handleOpenRegister}
+        />
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          initialMode={authMode}
+          onClose={() => setIsAuthModalOpen(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
       </div>
     );
   }
@@ -109,6 +158,10 @@ const MainApp: React.FC = () => {
         onNavigateHome={() => setCurrentScreen('gateway')}
         onOpenSettings={() => setIsSettingsModalOpen(true)}
         onVoiceGuide={() => speechService.speak(t('voiceHomeGreeting'), language)}
+        onOpenLogin={handleOpenLogin}
+        onOpenRegister={handleOpenRegister}
+        currentUser={currentUser}
+        onLogout={handleLogout}
       />
 
       {/* Main Responsive Content Area Container (full width on desktop up to max-w-6xl) */}
@@ -132,7 +185,7 @@ const MainApp: React.FC = () => {
             <div className="space-y-2 max-w-xs">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-[#52B788]/50 text-[#8EE0B6] text-xs font-bold">
                 <Sparkles className="w-4 h-4 text-[#52B788]" />
-                <span>AI Model Active</span>
+                <span>{t('aiModelActive', 'AI Model Active')}</span>
               </div>
               <h3 className="font-heading text-xl font-bold text-white">
                 {t('analyzingImage', 'AI is analyzing your crop...')}
@@ -203,6 +256,13 @@ const MainApp: React.FC = () => {
         isOpen={isSettingsModalOpen}
         onClose={() => setIsSettingsModalOpen(false)}
       />
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        initialMode={authMode}
+        onClose={() => setIsAuthModalOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </div>
   );
 };
@@ -216,3 +276,4 @@ export function App() {
 }
 
 export default App;
+

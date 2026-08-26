@@ -22,9 +22,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
   const handleClearHistory = () => {
     speechService.playChime('alert');
-    if (window.confirm('সব পূর্ববর্তী পরীক্ষার রেকর্ড মুছে ফেলতে চান? / Clear all scan history?')) {
+    if (window.confirm(t('confirmClearHistoryPrompt', 'Clear all past scan records from device storage?'))) {
       storageService.clearHistory();
-      alert('রেকর্ড মুছে ফেলা হয়েছে / History cleared');
+      alert(t('clearHistorySuccess', 'Scan history records have been cleared.'));
     }
   };
 
@@ -101,7 +101,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 <div className="text-sm font-bold text-[#173C2D]">
                   {t('voiceToggle', 'Voice Guide')}
                 </div>
-                <div className="text-xs text-[#4C5548]">কণ্ঠ নির্দেশিকা শুনুন</div>
+                <div className="text-xs text-[#4C5548]">
+                  {t('voiceGuideSubtitle', 'Audio narration of guidance')}
+                </div>
               </div>
             </div>
             <button
@@ -109,7 +111,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               onClick={() => speechService.speak(t('voiceHomeGreeting'), language)}
               className="touch-target px-3.5 py-1.5 rounded-xl bg-[#2B6E4F] hover:bg-[#173C2D] text-white text-xs font-bold shadow-sm transition-colors"
             >
-              পরীক্ষা / Test
+              {t('voiceTestBtn', 'Test Voice')}
             </button>
           </div>
         </div>
@@ -130,9 +132,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
         <div className="mt-5 pt-3 border-t border-[#E1D9C4] text-center text-xs text-[#4C5548]">
           <div className="flex items-center justify-center gap-1 font-semibold text-[#173C2D]">
             <Info className="w-3.5 h-3.5 text-[#2B6E4F]" />
-            <span>Crop Rakshak · Regional Crop Health Network</span>
+            <span>{t('settingsInfoBrand', 'Crop Rakshak · Regional Crop Health Network')}</span>
           </div>
-          <p className="mt-1 text-[11px]">Empowering Indian Smallholder Farmers with Offline AI</p>
+          <p className="mt-1 text-[11px]">{t('settingsInfoTagline', 'Empowering Indian Smallholder Farmers with Offline AI')}</p>
         </div>
       </div>
     </div>

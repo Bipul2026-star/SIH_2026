@@ -56,7 +56,7 @@ export const ConfidenceMeter: React.FC<ConfidenceMeterProps> = ({
       {showLabel && (
         <div className="flex justify-between items-center text-[10px] font-semibold text-[#4C5548] mt-1.5 px-1">
           <span>0%</span>
-          <span className="text-[#8A5A34] font-bold">60% (সীমা / Limit)</span>
+          <span className="text-[#8A5A34] font-bold">{t('confidenceLimitLabel', '60% (Threshold Limit)')}</span>
           <span>100%</span>
         </div>
       )}

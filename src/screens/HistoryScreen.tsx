@@ -25,7 +25,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
 
   const handleClear = () => {
     speechService.playChime('alert');
-    if (window.confirm('সব ইতিহাস মুছতে চান? / Clear history?')) {
+    if (window.confirm(t('confirmClearHistoryPrompt', 'Clear all past scan records?'))) {
       storageService.clearHistory();
       setHistoryItems([]);
     }
@@ -51,7 +51,7 @@ export const HistoryScreen: React.FC<HistoryScreenProps> = ({
               {t('historyTitle', 'Past Crop Scans')}
             </h2>
             <p className="text-xs text-[#4C5548]">
-              {historyItems.length} টি সংরক্ষিত পরীক্ষা (Saved Scans)
+              {historyItems.length} {t('historySavedScansCount', 'Saved Scan Records')}
             </p>
           </div>
         </div>

@@ -123,7 +123,7 @@ export const HelpScreen: React.FC<HelpScreenProps> = () => {
             </div>
           </div>
           <span className="text-xs px-3.5 py-1.5 bg-white/20 rounded-full font-bold text-white shadow-sm">
-            কল করুন
+            {t('callNowBadge', 'Call Now')}
           </span>
         </button>
 
@@ -188,7 +188,9 @@ export const HelpScreen: React.FC<HelpScreenProps> = () => {
                   <h3 className="font-heading font-bold text-base text-[#173C2D]">
                     {t('helpOfficeTitle', 'Nearby Agriculture Offices')}
                   </h3>
-                  <p className="text-xs text-[#4C5548]">সরকারি কৃষি কেন্দ্র ও KVK শাখা</p>
+                  <p className="text-xs text-[#4C5548]">
+                    {t('helpOfficesModalSub', 'Government Agriculture Centers & KVK Branches')}
+                  </p>
                 </div>
               </div>
               <button
@@ -220,7 +222,7 @@ export const HelpScreen: React.FC<HelpScreenProps> = () => {
                       href={`tel:${office.phone.replace(/[^0-9]/g, '')}`}
                       className="px-3.5 py-1.5 rounded-xl bg-[#2B6E4F] hover:bg-[#173C2D] text-white font-bold text-xs shadow-sm transition-colors"
                     >
-                      ফোন করুন
+                      {t('callNowBadge', 'Call')}
                     </a>
                   </div>
                 </div>
