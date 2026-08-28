@@ -7,11 +7,8 @@ import {
   Activity,
   Send,
   CheckCircle,
-  Eye,
   X,
-  Volume2,
   Users,
-  MapPin,
   TrendingUp,
 } from 'lucide-react';
 import { speechService } from '../services/speechService';
@@ -159,7 +156,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               <div className="font-heading font-bold text-base sm:text-lg flex items-center gap-2">
                 <span>{t('kvkHeaderTitle', 'Crop Rakshak — District Dashboard')}</span>
                 <span className="px-2 py-0.5 rounded-full bg-[#E38A1C] text-white text-[10px] font-mono font-bold">
-                  OFFICER
+                  {t('officerBadge', 'OFFICER')}
                 </span>
               </div>
               <p className="text-xs text-[#BFE0CB] font-medium">
@@ -173,7 +170,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               <Shield className="w-4 h-4 text-[#52B788]" />
               <div>
                 <div className="font-bold text-white leading-tight">{t('kvkOfficerName', 'Dr. R. Sen')}</div>
-                <div className="text-[10px] text-[#BFE0CB]">Enquiry & Advisory Officer</div>
+                <div className="text-[10px] text-[#BFE0CB]">{t('kvkOfficerRole', 'Enquiry & Advisory Officer')}</div>
               </div>
             </div>
 
@@ -185,7 +182,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               }}
               className="px-3.5 py-2 rounded-xl bg-[#52B788] hover:bg-[#74C69D] text-[#173C2D] font-bold text-xs flex items-center gap-1.5 shadow-sm transition-transform active:scale-95"
             >
-              <span>Farmer Portal →</span>
+              <span>{t('kvkFarmerPortalLink', 'Farmer Portal →')}</span>
             </button>
           </div>
         </div>
@@ -205,7 +202,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
             </div>
             <div className="text-[11px] text-[#2B6E4F] font-bold mt-1 flex items-center gap-1">
               <TrendingUp className="w-3.5 h-3.5" />
-              <span>+18% from last week</span>
+              <span>{t('kvkTrendPlus', '+18% from last week')}</span>
             </div>
           </div>
 
@@ -215,10 +212,10 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               <span className="w-2.5 h-2.5 rounded-full bg-[#E38A1C] animate-pulse" />
             </div>
             <div className="font-heading font-extrabold text-2xl sm:text-3xl text-[#E38A1C] mt-1.5">
-              3 Blocks
+              {t('kvkThreeBlocks', '3 Blocks')}
             </div>
             <div className="text-[11px] text-[#8A5A34] font-medium mt-1">
-              Burdwan-I, Kalna-II, Nadia
+              {t('kvkBlockNames', 'Burdwan-I, Kalna-II, Nadia')}
             </div>
           </div>
 
@@ -231,20 +228,20 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               96.4%
             </div>
             <div className="text-[11px] text-[#2B6E4F] font-semibold mt-1">
-              Via SMS & WhatsApp Mitra
+              {t('kvkViaSms', 'Via SMS & WhatsApp Mitra')}
             </div>
           </div>
 
           <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#E1D9C4] shadow-sm hover:shadow-agri transition-shadow">
             <div className="flex items-center justify-between text-xs text-[#4C5548] font-medium">
-              <span>Verified Submissions</span>
+              <span>{t('kvkVerifiedSubmissions', 'Verified Submissions')}</span>
               <CheckCircle className="w-4 h-4 text-[#2B6E4F]" />
             </div>
             <div className="font-heading font-extrabold text-2xl sm:text-3xl text-[#173C2D] mt-1.5">
               842 / 910
             </div>
             <div className="text-[11px] text-[#4C5548] font-medium mt-1">
-              92.5% resolution rate
+              {t('kvkResolutionRate', '92.5% resolution rate')}
             </div>
           </div>
         </div>
@@ -261,7 +258,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                     {t('kvkOutbreakMapTitle', 'Regional Outbreak Map (Risk Heatmap)')}
                   </h3>
                   <p className="text-xs text-[#4C5548]">
-                    Aggregated signal from 1,200+ leaf scans plotted across block circles
+                    {t('kvkOutbreakMapSub', 'Aggregated signal from 1,200+ leaf scans plotted across block circles')}
                   </p>
                 </div>
 
@@ -338,10 +335,10 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="border-b border-[#E1D9C4] text-[#4C5548] font-bold">
-                      <th className="py-2.5 px-3">Block / Circle</th>
-                      <th className="py-2.5 px-3">Primary Detected Issue</th>
-                      <th className="py-2.5 px-3">Scan Density</th>
-                      <th className="py-2.5 px-3">Risk Level</th>
+                      <th className="py-2.5 px-3">{t('kvkThBlock', 'Block / Circle')}</th>
+                      <th className="py-2.5 px-3">{t('kvkThIssue', 'Primary Detected Issue')}</th>
+                      <th className="py-2.5 px-3">{t('kvkThDensity', 'Scan Density')}</th>
+                      <th className="py-2.5 px-3">{t('kvkThRisk', 'Risk Level')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#E1D9C4]/60">
@@ -351,7 +348,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                       <td className="py-2.5 px-3 font-mono">428 Scans</td>
                       <td className="py-2.5 px-3">
                         <span className="px-2.5 py-0.5 rounded-full bg-[#FBE1DC] text-[#C0431F] font-bold text-[10px]">
-                          High Risk
+                          {t('highRiskBadge', 'High Risk')}
                         </span>
                       </td>
                     </tr>
@@ -361,7 +358,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                       <td className="py-2.5 px-3 font-mono">371 Scans</td>
                       <td className="py-2.5 px-3">
                         <span className="px-2.5 py-0.5 rounded-full bg-[#FBE1DC] text-[#C0431F] font-bold text-[10px]">
-                          High Risk
+                          {t('highRiskBadge', 'High Risk')}
                         </span>
                       </td>
                     </tr>
@@ -371,7 +368,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                       <td className="py-2.5 px-3 font-mono">215 Scans</td>
                       <td className="py-2.5 px-3">
                         <span className="px-2.5 py-0.5 rounded-full bg-[#FBEFDC] text-[#E38A1C] font-bold text-[10px]">
-                          Medium Risk
+                          {t('medRiskBadge', 'Medium Risk')}
                         </span>
                       </td>
                     </tr>
@@ -389,11 +386,11 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                   {t('kvkReviewQueueTitle', 'Farmer Reports Needing Review')}
                 </h3>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#F3ECDA] text-[#173C2D] font-mono font-bold text-xs">
-                  {submissions.length} items
+                  {submissions.length} {t('kvkItemsCount', 'items')}
                 </span>
               </div>
               <p className="text-xs text-[#4C5548] mb-4">
-                Verify AI diagnoses and approve targeted advice for field dispatch
+                {t('kvkReviewQueueSub', 'Verify AI diagnoses and approve targeted advice for field dispatch')}
               </p>
 
               {/* Review Queue Items */}
@@ -419,7 +416,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                             : 'bg-[#FBEFDC] text-[#E38A1C]'
                         }`}
                       >
-                        {sub.severity === 'high' ? 'High' : 'Medium'}
+                        {sub.severity === 'high' ? t('highBadge', 'High') : t('medBadge', 'Medium')}
                       </span>
                     </div>
 
@@ -440,10 +437,10 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                         }`}
                       >
                         {sub.status === 'verified'
-                          ? '✓ Verified'
+                          ? t('kvkStatusVerified', '✓ Verified')
                           : sub.status === 'advisory_sent'
-                          ? '✓ Advisory Sent'
-                          : 'Pending Review'}
+                          ? t('kvkStatusAdvisorySent', '✓ Advisory Sent')
+                          : t('kvkStatusPending', 'Pending Review')}
                       </span>
                     </div>
                   </div>
@@ -460,7 +457,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               <div className="flex items-center justify-between pb-3 border-b border-[#E1D9C4]">
                 <div>
                   <h3 className="font-heading font-bold text-lg text-[#173C2D]">
-                    Farmer Submission Inspection
+                    {t('kvkInspectionTitle', 'Farmer Submission Inspection')}
                   </h3>
                   <p className="text-xs text-[#4C5548]">
                     {selectedSub.farmerName} ({selectedSub.phone})
@@ -483,14 +480,14 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                   </div>
                   <div className="space-y-1 text-xs">
                     <div className="font-bold text-[#173C2D] text-sm">{selectedSub.issue}</div>
-                    <div className="text-[#4C5548]">Crop: <b>{selectedSub.crop}</b></div>
-                    <div className="text-[#4C5548]">Location: <b>{selectedSub.village}, {selectedSub.block}</b></div>
-                    <div className="text-[#4C5548]">AI Confidence: <b>{selectedSub.confidence}%</b></div>
+                    <div className="text-[#4C5548]">{t('cropLabel', 'Crop:')} <b>{selectedSub.crop}</b></div>
+                    <div className="text-[#4C5548]">{t('locationLabel', 'Location:')} <b>{selectedSub.village}, {selectedSub.block}</b></div>
+                    <div className="text-[#4C5548]">{t('aiConfidenceLabel', 'AI Confidence:')} <b>{selectedSub.confidence}%</b></div>
                     <div className="pt-1">
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                         selectedSub.severity === 'high' ? 'bg-[#FBE1DC] text-[#C0431F]' : 'bg-[#FBEFDC] text-[#E38A1C]'
                       }`}>
-                        Severity: {selectedSub.severity.toUpperCase()}
+                        {t('severityLabel', 'Severity:')} {selectedSub.severity.toUpperCase()}
                       </span>
                     </div>
                   </div>
@@ -498,13 +495,13 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
 
                 {/* Status Bar */}
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] text-xs flex items-center justify-between">
-                  <span className="text-[#4C5548]">Current Status:</span>
+                  <span className="text-[#4C5548]">{t('currentStatusLabel', 'Current Status:')}</span>
                   <span className="font-bold text-[#173C2D]">
                     {selectedSub.status === 'verified'
-                      ? '✓ Verified by Officer'
+                      ? t('kvkStatusVerified', '✓ Verified by Officer')
                       : selectedSub.status === 'advisory_sent'
-                      ? '✓ Advisory SMS / Push Dispatched'
-                      : 'Pending Officer Review'}
+                      ? t('kvkStatusAdvisorySent', '✓ Advisory SMS / Push Dispatched')
+                      : t('kvkStatusPending', 'Pending Officer Review')}
                   </span>
                 </div>
 
@@ -516,7 +513,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                     className="flex-1 py-3 rounded-2xl bg-[#52B788] hover:bg-[#2B6E4F] hover:text-white text-[#173C2D] font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors"
                   >
                     <CheckCircle className="w-4 h-4" />
-                    <span>Verify Diagnosis</span>
+                    <span>{t('kvkVerifyBtn', 'Verify Diagnosis')}</span>
                   </button>
 
                   <button
@@ -525,7 +522,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                     className="flex-1 py-3 rounded-2xl bg-[#2B6E4F] hover:bg-[#173C2D] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Push Remedy SMS</span>
+                    <span>{t('kvkPushSmsBtn', 'Push Remedy SMS')}</span>
                   </button>
                 </div>
               </div>
@@ -540,10 +537,10 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
               <div className="flex items-center justify-between pb-3 border-b border-[#E1D9C4]">
                 <div>
                   <h3 className="font-heading font-bold text-lg text-[#173C2D]">
-                    Broadcast Regional Advisory
+                    {t('kvkBroadcastModalTitle', 'Broadcast Regional Advisory')}
                   </h3>
                   <p className="text-xs text-[#4C5548]">
-                    Push SMS & app alerts to all registered farmers in block
+                    {t('kvkBroadcastModalSub', 'Push SMS & app alerts to all registered farmers in block')}
                   </p>
                 </div>
                 <button
@@ -560,16 +557,16 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                   <div className="w-12 h-12 rounded-full bg-[#E4F3EA] text-[#2B6E4F] mx-auto flex items-center justify-center">
                     <CheckCircle className="w-6 h-6" />
                   </div>
-                  <h4 className="font-bold text-sm text-[#173C2D]">Advisory Broadcast Dispatched!</h4>
+                  <h4 className="font-bold text-sm text-[#173C2D]">{t('kvkBroadcastSuccessTitle', 'Advisory Broadcast Dispatched!')}</h4>
                   <p className="text-xs text-[#4C5548]">
-                    Sent to 420 registered farmers in {broadcastTargetBlock} circle.
+                    {t('kvkBroadcastSuccessDesc', 'Sent to 420 registered farmers in circle.')}
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleBroadcastSubmit} className="mt-4 space-y-4">
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-bold text-[#173C2D] block mb-1">Target Block</label>
+                      <label className="text-xs font-bold text-[#173C2D] block mb-1">{t('kvkTargetBlockLabel', 'Target Block')}</label>
                       <select
                         value={broadcastTargetBlock}
                         onChange={(e) => setBroadcastTargetBlock(e.target.value)}
@@ -583,7 +580,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                     </div>
 
                     <div>
-                      <label className="text-xs font-bold text-[#173C2D] block mb-1">Target Crop</label>
+                      <label className="text-xs font-bold text-[#173C2D] block mb-1">{t('kvkTargetCropLabel', 'Target Crop')}</label>
                       <select
                         value={broadcastCrop}
                         onChange={(e) => setBroadcastCrop(e.target.value)}
@@ -598,7 +595,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-[#173C2D] block mb-1">Advisory Message</label>
+                    <label className="text-xs font-bold text-[#173C2D] block mb-1">{t('kvkAdvisoryMsgLabel', 'Advisory Message')}</label>
                     <textarea
                       rows={4}
                       value={broadcastText}
@@ -613,7 +610,7 @@ export const KvkDashboardScreen: React.FC<KvkDashboardScreenProps> = ({ onNaviga
                       className="w-full py-3.5 rounded-2xl bg-[#E38A1C] hover:bg-[#C26F0E] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95"
                     >
                       <Send className="w-4 h-4" />
-                      <span>Dispatch Regional Push to {broadcastTargetBlock}</span>
+                      <span>{t('kvkDispatchPushBtn', 'Dispatch Regional Push to Target Block')}</span>
                     </button>
                   </div>
                 </form>
