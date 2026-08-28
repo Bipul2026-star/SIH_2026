@@ -79,7 +79,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
             <span className="text-xs px-3 py-1 bg-white/20 rounded-full font-bold">
-              {t('callNowBadge', 'Call Now')}
+              কল করুন
             </span>
           </button>
 
@@ -97,14 +97,10 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
                 <div className="text-sm font-bold text-[#173C2D]">
                   {t('whatsappAction', 'Message on WhatsApp')}
                 </div>
-                <div className="text-xs text-[#4C5548]">
-                  {t('sendPhotoForAdvice', 'Send photos for instant advice')}
-                </div>
+                <div className="text-xs text-[#4C5548]">ছবি পাঠিয়ে পরামর্শ নিন</div>
               </div>
             </div>
-            <span className="text-xs text-[#2B6E4F] font-bold">
-              {t('startChatBadge', 'Start Chat')}
-            </span>
+            <span className="text-xs text-[#2B6E4F] font-bold">চ্যাট শুরু</span>
           </button>
 
           {/* Nearby Office */}
@@ -116,9 +112,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
               <div className="font-bold text-[#173C2D]">
                 {t('helpOfficeTitle', 'Nearby Agri Office')}
               </div>
-              <div>
-                {t('subdivisionKvkText', 'Your subdivision Agri Information Center & KVK branch')}
-              </div>
+              <div>আপনার মহকুমা কৃষি তথ্য কেন্দ্র ও KVK শাখা</div>
             </div>
           </div>
         </div>

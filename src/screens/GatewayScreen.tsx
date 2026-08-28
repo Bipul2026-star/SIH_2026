@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import type { ScreenType, Language } from '../types';
-import { Globe, ArrowRight, Shield, UserCheck, ChevronDown, Check, LogIn, UserPlus } from 'lucide-react';
+import { Globe, ArrowRight, Shield, UserCheck, ChevronDown, Check } from 'lucide-react';
 import { speechService } from '../services/speechService';
 
 interface GatewayScreenProps {
   onSelectDoor: (screen: ScreenType) => void;
-  onOpenLogin?: () => void;
-  onOpenRegister?: () => void;
 }
 
-export const GatewayScreen: React.FC<GatewayScreenProps> = ({
-  onSelectDoor,
-  onOpenLogin,
-  onOpenRegister,
-}) => {
+export const GatewayScreen: React.FC<GatewayScreenProps> = ({ onSelectDoor }) => {
   const { t, language, setLanguage, languages, activeLanguageInfo } = useLanguage();
   const [showLangMenu, setShowLangMenu] = useState(false);
 
@@ -37,105 +31,70 @@ export const GatewayScreen: React.FC<GatewayScreenProps> = ({
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-[#173C2D] to-[#2B6E4F] text-[#FBF7ED] flex flex-col justify-between selection:bg-[#52B788] selection:text-[#173C2D]">
       {/* Top Bar */}
-      <header className="flex items-center justify-between px-4 sm:px-8 py-4 sm:py-5 border-b border-white/10 max-w-7xl w-full mx-auto">
+      <header className="flex items-center justify-between px-4 sm:px-8 py-5 border-b border-white/10 max-w-7xl w-full mx-auto">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#52B788] text-[#173C2D] flex items-center justify-center text-xl sm:text-2xl font-bold shadow-md">
+          <div className="w-11 h-11 rounded-xl bg-[#52B788] text-[#173C2D] flex items-center justify-center text-2xl font-bold shadow-md">
             🌾
           </div>
           <div>
-            <div className="font-heading font-extrabold text-lg sm:text-2xl tracking-tight text-white leading-tight">
+            <div className="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-white leading-tight">
               {t('appName', 'Crop Rakshak')}
             </div>
-            <div className="text-[11px] sm:text-xs text-[#CDE7D6] font-medium mt-0.5">
-              {t('gwBrandSub', 'Regional Crop Health Network')}
+            <div className="text-xs text-[#CDE7D6] font-medium mt-0.5">
+              ফসল রক্ষক · Regional Crop Health Network
             </div>
           </div>
         </div>
 
-        {/* Right Actions: Login/Register & Language Selector */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {onOpenLogin && (
-            <button
-              type="button"
-              onClick={() => {
-                speechService.playChime('click');
-                onOpenLogin();
-              }}
-              className="touch-target px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 text-[#FBF7ED] font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all active:scale-95 shadow-sm"
-            >
-              <LogIn className="w-3.5 h-3.5 text-[#52B788]" />
-              <span>{t('loginBtn', 'Login')}</span>
-            </button>
-          )}
+        {/* Language Selector Dropdown */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => {
+              speechService.playChime('click');
+              setShowLangMenu(!showLangMenu);
+            }}
+            aria-label="Select Language"
+            className="touch-target px-3.5 py-2 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 text-[#FBF7ED] font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+          >
+            <Globe className="w-4 h-4 text-[#52B788]" />
+            <span>{activeLanguageInfo.nativeName}</span>
+            <ChevronDown className="w-3.5 h-3.5 text-white/70" />
+          </button>
 
-          {onOpenRegister && (
-            <button
-              type="button"
-              onClick={() => {
-                speechService.playChime('click');
-                onOpenRegister();
-              }}
-              className="hidden xs:flex touch-target px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-[#52B788] hover:bg-[#74C69D] text-[#173C2D] font-extrabold text-xs sm:text-sm items-center gap-1.5 transition-all active:scale-95 shadow-sm"
-            >
-              <UserPlus className="w-3.5 h-3.5" />
-              <span>{t('registerBtn', 'Register')}</span>
-            </button>
-          )}
-
-          {/* Language Selector Dropdown */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => {
-                speechService.playChime('click');
-                setShowLangMenu(!showLangMenu);
-              }}
-              aria-label={t('languageSelect', 'Select Language')}
-              className="touch-target px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 text-[#FBF7ED] font-semibold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 transition-all active:scale-95 shadow-sm"
-            >
-              <Globe className="w-4 h-4 text-[#52B788]" />
-              <span>{activeLanguageInfo.nativeName}</span>
-              <ChevronDown className="w-3.5 h-3.5 text-white/70" />
-            </button>
-
-            {showLangMenu && (
-              <>
-                <div
-                  className="fixed inset-0 z-40 bg-black/40"
-                  onClick={() => setShowLangMenu(false)}
-                />
-                <div className="absolute right-0 mt-2 w-48 bg-[#173C2D] border border-white/20 rounded-2xl shadow-2xl z-50 overflow-hidden py-1.5 animate-in fade-in zoom-in-95 duration-150">
-                  <div className="px-3 py-1.5 text-[11px] font-bold text-[#8EE0B6] uppercase tracking-wider border-b border-white/10">
-                    {t('languageSelect', 'Select Language')}
-                  </div>
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLanguageChange(lang.code);
-                      }}
-                      className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between hover:bg-white/10 transition-colors ${
-                        language === lang.code
-                          ? 'bg-[#52B788]/20 text-[#8EE0B6] font-bold'
-                          : 'text-[#FBF7ED]'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span>{lang.flag}</span>
-                        <span>{lang.nativeName}</span>
-                      </div>
-                      {language === lang.code && (
-                        <Check className="w-4 h-4 text-[#52B788]" />
-                      )}
-                    </button>
-                  ))}
+          {showLangMenu && (
+            <>
+              <div
+                className="fixed inset-0 z-40 bg-black/40"
+                onClick={() => setShowLangMenu(false)}
+              />
+              <div className="absolute right-0 mt-2 w-48 bg-[#173C2D] border border-white/20 rounded-2xl shadow-2xl z-50 overflow-hidden py-1.5 animate-in fade-in zoom-in-95 duration-150">
+                <div className="px-3 py-1.5 text-[11px] font-bold text-[#8EE0B6] uppercase tracking-wider border-b border-white/10">
+                  {t('languageSelect', 'Select Language')}
                 </div>
-              </>
-            )}
-          </div>
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between hover:bg-white/10 transition-colors ${
+                      language === lang.code
+                        ? 'bg-[#52B788]/20 text-[#8EE0B6] font-bold'
+                        : 'text-[#FBF7ED]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span>{lang.flag}</span>
+                      <span>{lang.nativeName}</span>
+                    </div>
+                    {language === lang.code && (
+                      <Check className="w-4 h-4 text-[#52B788]" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </header>
 
@@ -148,7 +107,7 @@ export const GatewayScreen: React.FC<GatewayScreenProps> = ({
 
         {/* Title */}
         <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl mb-4">
-          {t('gwTitle', "Every farmer's photo strengthens the region's early warning")}
+          Every farmer's photo <span className="text-[#52B788]">strengthens</span> the region's early warning
         </h1>
 
         {/* Description */}
@@ -172,7 +131,7 @@ export const GatewayScreen: React.FC<GatewayScreenProps> = ({
             <div>
               <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#52B788]/20 text-[#8EE0B6] border border-[#52B788]/30 mb-4">
                 <UserCheck className="w-3.5 h-3.5" />
-                <span>{t('gwFarmerDoorTag', 'Public access (No login needed)')}</span>
+                <span>{t('gwFarmerDoorTag', 'Public access')}</span>
               </div>
               <h3 className="font-heading text-2xl font-bold text-white mb-2 group-hover:text-[#8EE0B6] transition-colors">
                 {t('gwFarmerDoorTitle', 'Farmer Portal')}
@@ -180,7 +139,7 @@ export const GatewayScreen: React.FC<GatewayScreenProps> = ({
               <p className="text-xs sm:text-sm text-[#D7E7DC] leading-relaxed mb-6 font-normal">
                 {t(
                   'gwFarmerDoorDesc',
-                  'Scan your crop, get instant remedy steps, and see disease alerts for your area. Login is optional.'
+                  'Scan your crop, get instant remedy steps, and see disease alerts for your area. No paperwork — just your phone number.'
                 )}
               </p>
             </div>
@@ -243,12 +202,8 @@ export const GatewayScreen: React.FC<GatewayScreenProps> = ({
 
       {/* Footer */}
       <footer className="text-center py-4 text-xs text-[#B9D4C2]/70 border-t border-white/10">
-        {t(
-          'gwFooterText',
-          'Crop Rakshak · Krishi Vigyan Kendra & Department of Agriculture, Government of West Bengal Circle'
-        )}
+        Crop Rakshak · Krishi Vigyan Kendra & Department of Agriculture, Government of West Bengal Circle
       </footer>
     </div>
   );
 };
-

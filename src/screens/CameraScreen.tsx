@@ -209,7 +209,7 @@ export const CameraScreen: React.FC<CameraScreenProps> = ({ onBack, onCaptureIma
                   className="touch-target w-full py-3 px-4 rounded-2xl bg-white/15 hover:bg-white/25 text-[#FACB77] font-bold text-xs flex items-center justify-center gap-2 border border-white/20 active:scale-95"
                 >
                   <Sparkles className="w-4 h-4" />
-                  <span>{t('sampleLeafTestBtn', 'Test with Sample Leaves')}</span>
+                  <span>নমুনা পাতার ছবি দিয়ে পরীক্ষা (Sample)</span>
                 </button>
               </div>
             </div>
@@ -270,7 +270,7 @@ export const CameraScreen: React.FC<CameraScreenProps> = ({ onBack, onCaptureIma
           <div className="flex items-center justify-between mb-3">
             <div className="text-xs font-bold text-[#8EE0B6] uppercase tracking-wider flex items-center gap-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>{t('selectSampleCropTitle', 'Select Sample Crop Photo:')}</span>
+              <span>নমুনা ছবি নির্বাচন করুন (Select Sample):</span>
             </div>
             <button
               type="button"
@@ -336,7 +336,7 @@ export const CameraScreen: React.FC<CameraScreenProps> = ({ onBack, onCaptureIma
           className="touch-target w-14 h-14 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/20 text-[#8EE0B6] flex flex-col items-center justify-center shadow-md active:scale-95 transition-transform"
         >
           <Sparkles className="w-5 h-5" />
-          <span className="text-[10px] font-bold mt-0.5 text-white">{t('samplesTab', 'Samples')}</span>
+          <span className="text-[10px] font-bold mt-0.5 text-white">নমুনা / Test</span>
         </button>
       </div>
     </div>

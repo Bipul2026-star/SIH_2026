@@ -10,10 +10,12 @@ import {
   FileText,
   Bug,
   Download,
+  Calendar,
   Volume2,
   CheckCircle2,
   AlertTriangle,
   Wind,
+  Layers,
   Sparkles,
 } from 'lucide-react';
 import { speechService } from '../services/speechService';
@@ -66,12 +68,12 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
                 {featureType === 'pest' && t('featurePestTitle', 'Pest Forewarning')}
               </h3>
               <p className="text-xs text-[#4C5548]">
-                {featureType === 'health' && t('featureFarmHealthSubtitle', 'Satellite NDVI & Vegetation Monitoring')}
-                {featureType === 'irrigation' && t('featureIrrigationSubtitle', 'Soil Moisture & Water Schedule')}
-                {featureType === 'weather' && t('featureWeatherSubtitle', '5-Day Hyperlocal Agro-Met Forecast')}
-                {featureType === 'boundary' && t('featureBoundarySubtitle', 'Plot Plotting & Area Calculation')}
-                {featureType === 'soil' && t('featureSoilSubtitle', 'N-P-K Nutrient Card & Recommendations')}
-                {featureType === 'pest' && t('featurePestSubtitle', 'Early Warning Climate Disease Radar')}
+                {featureType === 'health' && 'Satellite NDVI & Vegetation Monitoring'}
+                {featureType === 'irrigation' && 'Soil Moisture & Water Schedule'}
+                {featureType === 'weather' && '5-Day Hyperlocal Agro-Met Forecast'}
+                {featureType === 'boundary' && 'Plot Plotting & Area Calculation'}
+                {featureType === 'soil' && 'N-P-K Nutrient Card & Recommendations'}
+                {featureType === 'pest' && 'Early Warning Climate Disease Radar'}
               </p>
             </div>
           </div>
@@ -95,41 +97,34 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
             <div className="space-y-3">
               <div className="p-4 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold uppercase text-[#2B6E4F]">
-                    {t('farmHealthVigorScore', 'Vegetative Vigor Score')}
-                  </span>
-                  <span className="text-sm font-extrabold bg-[#52B788]/20 text-[#173C2D] px-2.5 py-0.5 rounded-full">
-                    {t('farmHealthScoreValue', '0.78 (Good)')}
+                  <span className="text-xs font-bold uppercase text-[#2B6E4F]">Vegetative Vigor Score</span>
+                  <span className="text-sm font-extrabold text-[#173C2D] bg-[#52B788]/20 text-[#173C2D] px-2.5 py-0.5 rounded-full">
+                    0.78 (Good)
                   </span>
                 </div>
                 <div className="w-full bg-[#E1D9C4] h-2.5 rounded-full overflow-hidden">
                   <div className="bg-[#2B6E4F] h-full rounded-full" style={{ width: '78%' }} />
                 </div>
                 <p className="text-xs text-[#4C5548] mt-2">
-                  {t('farmHealthDesc', 'Sentinel-2 imagery shows healthy crop canopy in your plot with minimal moisture stress.')}
+                  Sentinel-2 imagery shows healthy crop canopy in your plot with minimal moisture stress.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5">
                 <div className="p-3 rounded-2xl bg-white border border-[#E1D9C4]">
-                  <div className="text-[11px] text-[#4C5548]">{t('farmHealthCanopy', 'Canopy Greenness')}</div>
-                  <div className="font-heading font-extrabold text-base text-[#173C2D] mt-0.5">
-                    {t('farmHealthCanopyVal', '86% Normal')}
-                  </div>
+                  <div className="text-[11px] text-[#4C5548]">Canopy Greenness</div>
+                  <div className="font-heading font-extrabold text-base text-[#173C2D] mt-0.5">86% Normal</div>
                 </div>
                 <div className="p-3 rounded-2xl bg-white border border-[#E1D9C4]">
-                  <div className="text-[11px] text-[#4C5548]">{t('farmHealthMoisture', 'Moisture Stress')}</div>
-                  <div className="font-heading font-extrabold text-base text-[#2B6E4F] mt-0.5">
-                    {t('farmHealthMoistureVal', 'Low (Normal)')}
-                  </div>
+                  <div className="text-[11px] text-[#4C5548]">Moisture Stress</div>
+                  <div className="font-heading font-extrabold text-base text-[#2B6E4F] mt-0.5">Low (Normal)</div>
                 </div>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-[#E4F3EA] border border-[#52B788]/40 text-xs text-[#173C2D] flex items-start gap-2.5">
                 <Sparkles className="w-4 h-4 text-[#2B6E4F] flex-shrink-0 mt-0.5" />
                 <div>
-                  <b>{t('advisoryTitle', 'Advisory:')} </b>
-                  {t('farmHealthAdvisory', 'Nitrogen absorption is optimal. Maintain current irrigation cycle for the next 4 days.')}
+                  <b>Advisory:</b> Nitrogen absorption is optimal. Maintain current irrigation cycle for the next 4 days.
                 </div>
               </div>
             </div>
@@ -140,38 +135,32 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
             <div className="space-y-3">
               <div className="p-4 rounded-2xl bg-[#E4EEFB] border border-[#BCD4F5]">
                 <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold text-[#1D4ED8] uppercase">
-                    {t('irrigationMoistureLabel', 'Current Soil Moisture')}
-                  </div>
-                  <span className="text-base font-extrabold text-[#1E3A8A]">
-                    {t('irrigationMoistureVal', '64% (Adequate)')}
-                  </span>
+                  <div className="text-xs font-bold text-[#1D4ED8] uppercase">Current Soil Moisture</div>
+                  <span className="text-base font-extrabold text-[#1E3A8A]">64% (Adequate)</span>
                 </div>
                 <p className="text-xs text-[#1E40AF] mt-1.5">
-                  {t('irrigationDesc', 'Top 15cm root zone has sufficient moisture. Next watering is recommended in 36 hours.')}
+                  Top 15cm root zone has sufficient moisture. Next watering is recommended in 36 hours.
                 </p>
               </div>
 
               <div className="space-y-2">
-                <div className="text-xs font-bold text-[#173C2D] uppercase tracking-wide">
-                  {t('irrigationPlanTitle', '3-Day Irrigation Plan')}
-                </div>
+                <div className="text-xs font-bold text-[#173C2D] uppercase tracking-wide">3-Day Irrigation Plan</div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] flex items-center justify-between text-xs">
                   <div>
-                    <span className="font-bold text-[#173C2D]">{t('irrigationTomorrow', 'Tomorrow (6:00 AM)')}</span>
-                    <p className="text-[11px] text-[#4C5548]">{t('irrigationTomorrowDesc', 'Light watering: 20mm standing depth')}</p>
+                    <span className="font-bold text-[#173C2D]">Tomorrow (6:00 AM)</span>
+                    <p className="text-[11px] text-[#4C5548]">Light watering: 20mm standing depth</p>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-[#2B6E4F] text-white font-bold text-[10px]">
-                    {t('irrigationRecommended', 'Recommended')}
+                    Recommended
                   </span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] flex items-center justify-between text-xs">
                   <div>
-                    <span className="font-bold text-[#173C2D]">{t('irrigationDayAfter', 'Day After Tomorrow')}</span>
-                    <p className="text-[11px] text-[#4C5548]">{t('irrigationDayAfterDesc', 'No watering needed (rain anticipated)')}</p>
+                    <span className="font-bold text-[#173C2D]">Day After Tomorrow</span>
+                    <p className="text-[11px] text-[#4C5548]">No watering needed (rain anticipated)</p>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-[#F3ECDA] text-[#4C5548] font-bold text-[10px]">
-                    {t('irrigationPause', 'Pause')}
+                    Pause
                   </span>
                 </div>
               </div>
@@ -183,37 +172,33 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
             <div className="space-y-3">
               <div className="p-4 rounded-2xl bg-[#FBEFDC] border border-[#EFCE93] flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-bold text-[#8A5A34] uppercase">
-                    {t('weatherSprayLabel', "Today's Spray Window")}
-                  </div>
-                  <div className="text-sm font-extrabold text-[#5B3A21] mt-0.5">
-                    {t('weatherSprayTime', '3:30 PM – 5:45 PM (Ideal)')}
-                  </div>
+                  <div className="text-xs font-bold text-[#8A5A34] uppercase">Today's Spray Window</div>
+                  <div className="text-sm font-extrabold text-[#5B3A21] mt-0.5">3:30 PM – 5:45 PM (Ideal)</div>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-[#8A5A34] font-semibold">
                   <Wind className="w-4 h-4" />
-                  <span>{t('weatherWind', 'Wind: 6 km/h')}</span>
+                  <span>Wind: 6 km/h</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-2 text-center text-xs">
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
-                  <div className="text-[10px] text-[#4C5548]">{t('weatherToday', 'Today')}</div>
+                  <div className="text-[10px] text-[#4C5548]">Today</div>
                   <div className="text-xl my-1">☀️</div>
                   <div className="font-bold text-[#173C2D]">28°C / 21°C</div>
-                  <div className="text-[10px] text-[#2B6E4F]">{t('weatherRainZero', '0% Rain')}</div>
+                  <div className="text-[10px] text-[#2B6E4F]">0% Rain</div>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
-                  <div className="text-[10px] text-[#4C5548]">{t('weatherTomorrow', 'Tomorrow')}</div>
+                  <div className="text-[10px] text-[#4C5548]">Tomorrow</div>
                   <div className="text-xl my-1">⛅</div>
                   <div className="font-bold text-[#173C2D]">29°C / 22°C</div>
-                  <div className="text-[10px] text-[#2B6E4F]">{t('weatherRainTen', '10% Rain')}</div>
+                  <div className="text-[10px] text-[#2B6E4F]">10% Rain</div>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
-                  <div className="text-[10px] text-[#4C5548]">{t('weatherThursday', 'Thursday')}</div>
+                  <div className="text-[10px] text-[#4C5548]">Thursday</div>
                   <div className="text-xl my-1">🌦️</div>
                   <div className="font-bold text-[#173C2D]">26°C / 20°C</div>
-                  <div className="text-[10px] text-[#E38A1C]">{t('weatherRainFortFive', '45% Rain')}</div>
+                  <div className="text-[10px] text-[#E38A1C]">45% Rain</div>
                 </div>
               </div>
             </div>
@@ -237,23 +222,19 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
                   <circle cx="210" cy="130" r="5" fill="#173C2D" />
                   <circle cx="80" cy="120" r="5" fill="#173C2D" />
                   <text x="140" y="85" fill="#173C2D" fontSize="11" fontWeight="bold" textAnchor="middle">
-                    {t('farmBoundaryPlotLabel', 'Plot #14 · 2.4 Bigha')}
+                    Plot #14 · 2.4 Bigha
                   </text>
                 </svg>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 text-xs">
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
-                  <div className="text-[10px] text-[#4C5548]">{t('farmBoundaryAreaLabel', 'Total Plot Area')}</div>
-                  <div className="font-bold text-sm text-[#173C2D] mt-0.5">
-                    {t('farmBoundaryAreaVal', '2.4 Bigha (0.79 Acre)')}
-                  </div>
+                  <div className="text-[10px] text-[#4C5548]">Total Plot Area</div>
+                  <div className="font-bold text-sm text-[#173C2D] mt-0.5">2.4 Bigha (0.79 Acre)</div>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4]">
-                  <div className="text-[10px] text-[#4C5548]">{t('farmBoundaryGeoLabel', 'Geo Location')}</div>
-                  <div className="font-bold text-sm text-[#173C2D] mt-0.5">
-                    {t('farmBoundaryGeoVal', '23.23° N, 87.86° E')}
-                  </div>
+                  <div className="text-[10px] text-[#4C5548]">Geo Location</div>
+                  <div className="font-bold text-sm text-[#173C2D] mt-0.5">23.23° N, 87.86° E</div>
                 </div>
               </div>
             </div>
@@ -264,31 +245,31 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
             <div className="space-y-3">
               <div className="p-3.5 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] space-y-2 text-xs">
                 <div className="flex justify-between items-center py-1 border-b border-[#E1D9C4]">
-                  <span className="font-semibold text-[#4C5548]">{t('soilNitrogen', 'Nitrogen (N)')}</span>
-                  <span className="font-bold text-[#173C2D]">{t('soilNitrogenVal', '240 kg/ha (Medium)')}</span>
+                  <span className="font-semibold text-[#4C5548]">Nitrogen (N)</span>
+                  <span className="font-bold text-[#173C2D]">240 kg/ha (Medium)</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#E1D9C4]">
-                  <span className="font-semibold text-[#4C5548]">{t('soilPhosphorus', 'Phosphorus (P)')}</span>
-                  <span className="font-bold text-[#2B6E4F]">{t('soilPhosphorusVal', '22 kg/ha (Optimum)')}</span>
+                  <span className="font-semibold text-[#4C5548]">Phosphorus (P)</span>
+                  <span className="font-bold text-[#2B6E4F]">22 kg/ha (Optimum)</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#E1D9C4]">
-                  <span className="font-semibold text-[#4C5548]">{t('soilPotassium', 'Potassium (K)')}</span>
-                  <span className="font-bold text-[#173C2D]">{t('soilPotassiumVal', '290 kg/ha (High)')}</span>
+                  <span className="font-semibold text-[#4C5548]">Potassium (K)</span>
+                  <span className="font-bold text-[#173C2D]">290 kg/ha (High)</span>
                 </div>
                 <div className="flex justify-between items-center py-1 border-b border-[#E1D9C4]">
-                  <span className="font-semibold text-[#4C5548]">{t('soilPh', 'Soil pH')}</span>
-                  <span className="font-bold text-[#2B6E4F]">{t('soilPhVal', '6.5 (Ideal Neutral)')}</span>
+                  <span className="font-semibold text-[#4C5548]">Soil pH</span>
+                  <span className="font-bold text-[#2B6E4F]">6.5 (Ideal Neutral)</span>
                 </div>
                 <div className="flex justify-between items-center py-1">
-                  <span className="font-semibold text-[#4C5548]">{t('soilOrganicCarbon', 'Organic Carbon')}</span>
-                  <span className="font-bold text-[#173C2D]">{t('soilOrganicCarbonVal', '0.68% (Moderate)')}</span>
+                  <span className="font-semibold text-[#4C5548]">Organic Carbon</span>
+                  <span className="font-bold text-[#173C2D]">0.68% (Moderate)</span>
                 </div>
               </div>
 
               {downloadSuccess ? (
                 <div className="p-3 rounded-2xl bg-[#E4F3EA] border border-[#52B788] text-xs text-[#173C2D] font-bold flex items-center justify-center gap-2 animate-in fade-in duration-200">
                   <CheckCircle2 className="w-4 h-4 text-[#2B6E4F]" />
-                  <span>{t('soilDownloadedNotice', 'Soil_Health_Card_Burdwan_Circle.pdf downloaded!')}</span>
+                  <span>Soil_Health_Card_Burdwan_Circle.pdf downloaded!</span>
                 </div>
               ) : (
                 <button
@@ -297,7 +278,7 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
                   className="w-full py-3.5 rounded-2xl bg-[#2B6E4F] hover:bg-[#173C2D] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-transform active:scale-95"
                 >
                   <Download className="w-4 h-4" />
-                  <span>{t('soilDownloadBtn', 'Download Official Soil Card (PDF)')}</span>
+                  <span>Download Official Soil Card (PDF)</span>
                 </button>
               )}
             </div>
@@ -310,30 +291,30 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#E38A1C] uppercase flex items-center gap-1">
                     <AlertTriangle className="w-4 h-4" />
-                    <span>{t('pestForewarningLabel', 'Active 14-Day Forewarning')}</span>
+                    <span>Active 14-Day Forewarning</span>
                   </span>
                   <span className="px-2 py-0.5 rounded-full bg-[#E38A1C] text-white font-bold text-[10px]">
-                    {t('pestAlertLevel', 'Alert Level 2')}
+                    Alert Level 2
                   </span>
                 </div>
                 <p className="text-[#5B3A21] leading-relaxed">
-                  {t('pestForewarningDesc', 'High night humidity (85%+) and warm days favour Leaf Blight and Yellow Stem Borer across rice plots in Burdwan & Nadia.')}
+                  High night humidity (85%+) and warm days favour Leaf Blight and Yellow Stem Borer across rice plots in Burdwan & Nadia.
                 </p>
               </div>
 
               <div className="space-y-2 text-xs">
-                <div className="font-bold text-[#173C2D]">{t('pestActionsTitle', 'Recommended Preventive Actions:')}</div>
+                <div className="font-bold text-[#173C2D]">Recommended Preventive Actions:</div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] flex items-start gap-2.5">
                   <span className="w-5 h-5 rounded-full bg-[#2B6E4F] text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0">
                     1
                   </span>
-                  <span className="text-[#4C5548]">{t('pestAction1', 'Apply prophylactic Neem seed kernel extract (5%) on leaf whorls.')}</span>
+                  <span className="text-[#4C5548]">Apply prophylactic Neem seed kernel extract (5%) on leaf whorls.</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#FBF7ED] border border-[#E1D9C4] flex items-start gap-2.5">
                   <span className="w-5 h-5 rounded-full bg-[#2B6E4F] text-white font-bold text-[10px] flex items-center justify-center flex-shrink-0">
                     2
                   </span>
-                  <span className="text-[#4C5548]">{t('pestAction2', 'Install light and pheromone traps at field borders to catch emerging moths.')}</span>
+                  <span className="text-[#4C5548]">Install light and pheromone traps at field borders to catch emerging moths.</span>
                 </div>
               </div>
             </div>
@@ -347,16 +328,16 @@ export const AgriFeatureModal: React.FC<AgriFeatureModalProps> = ({ featureType,
             onClick={() => {
               const speakText =
                 featureType === 'health'
-                  ? t('farmHealthAdvisory', 'Farm Health: Satellite vigor score is 78 percent good. Nitrogen is optimal.')
+                  ? 'Farm Health: Satellite vigor score is 78 percent good. Nitrogen is optimal.'
                   : featureType === 'irrigation'
-                  ? t('irrigationDesc', 'Irrigation Advisory: Soil moisture is 64 percent adequate. Next watering recommended tomorrow morning.')
+                  ? 'Irrigation Advisory: Soil moisture is 64 percent adequate. Next watering recommended tomorrow morning.'
                   : featureType === 'weather'
-                  ? t('weatherSprayTime', 'Weather forecast: 28 degrees celsius. Ideal spray window between 3:30 PM to 5:45 PM.')
+                  ? 'Weather forecast: 28 degrees celsius. Ideal spray window between 3:30 PM to 5:45 PM.'
                   : featureType === 'boundary'
-                  ? t('farmBoundaryPlotLabel', 'Farm boundary: Total area is 2.4 Bigha in Burdwan circle.')
+                  ? 'Farm boundary: Total area is 2.4 Bigha in Burdwan circle.'
                   : featureType === 'soil'
-                  ? t('soilCardTitle', 'Soil Health Card: Nitrogen medium, Phosphorus optimum, Potassium high, pH is 6.5 ideal.')
-                  : t('pestForewarningDesc', 'Pest forewarning: High humidity increases Leaf Blight risk. Apply prophylactic neem extract.');
+                  ? 'Soil Health Card: Nitrogen medium, Phosphorus optimum, Potassium high, pH is 6.5 ideal.'
+                  : 'Pest forewarning: High humidity increases Leaf Blight risk. Apply prophylactic neem extract.';
               handleSpeech(speakText);
             }}
             className="touch-target px-3.5 py-2 rounded-2xl bg-[#F3ECDA] hover:bg-[#E1D9C4] text-[#173C2D] text-xs font-bold flex items-center gap-1.5 transition-colors"

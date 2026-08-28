@@ -2,10 +2,17 @@ import React, { useRef, useState } from 'react';
 import {
   Camera,
   Upload,
+  History,
   AlertTriangle,
   ChevronRight,
   Sparkles,
   Volume2,
+  Activity,
+  Droplets,
+  CloudSun,
+  MapPin,
+  FileText,
+  Bug,
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import type { ScreenType, QuickTestPreset, AgriFeatureType } from '../types';
@@ -90,7 +97,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <div className="max-w-xl space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-[#8EE0B6] text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{t('aiCropDoctorTag', 'AI Crop Doctor · Instant Diagnosis')}</span>
+              <span>AI Crop Doctor · Instant Diagnosis</span>
             </div>
             <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
               {t('cameraCtaTitle', '📷 Take a Crop Photo')}
@@ -144,7 +151,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <div className="text-xs font-bold text-[#8A5A34] uppercase tracking-wider flex items-center gap-2">
               <span>{t('regionalAlertBannerTitle', '⚠️ Disease Alert')}</span>
               <span className="px-2 py-0.2 bg-[#E38A1C] text-white text-[10px] rounded-full font-mono font-bold">
-                {t('highRiskBadge', 'HIGH RISK')}
+                HIGH RISK
               </span>
             </div>
             <p className="text-xs sm:text-sm text-[#5B3A21] font-semibold mt-0.5">
@@ -163,11 +170,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h3 className="font-heading font-bold text-lg text-[#173C2D]">
-            {t('agriServicesTitle', 'Agri Services & Farm Advisory')}
+            Agri Services & Farm Advisory
           </h3>
-          <span className="text-xs text-[#4C5548]">
-            {t('agriServicesSubtitle', 'Live Satellite & Weather Tools')}
-          </span>
+          <span className="text-xs text-[#4C5548]">Live Satellite & Weather Tools</span>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -282,7 +287,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               {t('historyBtn', 'Scan History')}
             </h4>
             <p className="text-xs text-[#4C5548] m-0 leading-relaxed">
-              {t('featureHistoryDesc', 'View your previous diagnoses & reports.')}
+              View your previous diagnoses & reports.
             </p>
           </div>
 
@@ -301,7 +306,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               {t('helpTitle', 'Farmer Support')}
             </h4>
             <p className="text-xs text-[#4C5548] m-0 leading-relaxed">
-              {t('featureHelpDesc', 'Call KVK Helpline & WhatsApp expert.')}
+              Call KVK Helpline & WhatsApp expert.
             </p>
           </div>
         </div>
@@ -315,7 +320,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <span>{t('quickTestTitle', 'Quick test sample crops:')}</span>
           </div>
           <span className="text-[10px] text-[#4C5548] font-mono font-bold bg-[#F3ECDA] px-2 py-0.5 rounded-full">
-            {t('oneTapDemoBadge', '1-TAP DEMO')}
+            1-TAP DEMO
           </span>
         </div>
 

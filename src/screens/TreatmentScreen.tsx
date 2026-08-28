@@ -64,7 +64,7 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-4 pb-24 sm:pb-16 animate-in fade-in duration-200">
+    <div className="flex flex-col gap-4 pb-28 animate-in fade-in duration-200">
       {/* Top Header */}
       <div className="flex items-center justify-between">
         <button
@@ -73,19 +73,16 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
             speechService.playChime('click');
             onBack();
           }}
-          className="touch-target px-3.5 py-1.5 rounded-2xl bg-[#F3ECDA] hover:bg-[#E1D9C4] border border-[#E1D9C4] text-[#173C2D] font-bold text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
+          className="touch-target w-11 h-11 rounded-2xl bg-stone-900 border border-stone-700 text-stone-300 flex items-center justify-center active:scale-95 transition-transform"
         >
-          <ArrowLeft className="w-4 h-4" />
-          <span>{t('homeNavBack', 'Back')}</span>
+          <ArrowLeft className="w-5 h-5" />
         </button>
 
         <div className="text-center">
-          <h2 className="font-heading text-lg sm:text-xl font-extrabold text-[#173C2D]">
+          <h2 className="text-base font-extrabold text-white">
             {t('treatmentTitle', 'Treatment & Care')}
           </h2>
-          <p className="text-[11px] text-[#2B6E4F] font-bold">
-            {t(result.cropNameKey)} • {t(result.labelKey)}
-          </p>
+          <p className="text-[11px] text-emerald-400 font-semibold">{t(result.cropNameKey)} • {t(result.labelKey)}</p>
         </div>
 
         {/* Read All Audio Button */}
@@ -93,22 +90,21 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
           type="button"
           onClick={handleReadAllSteps}
           aria-label={t('listenTreatment', 'Listen Steps')}
-          className="touch-target px-3.5 py-1.5 rounded-2xl bg-[#F3ECDA] hover:bg-[#E1D9C4] border border-[#E1D9C4] text-[#173C2D] text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
+          className="touch-target w-11 h-11 rounded-2xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 flex items-center justify-center shadow-md active:scale-95"
         >
-          <Volume2 className="w-4 h-4 text-[#2B6E4F]" />
-          <span>{t('listenTreatment', 'Listen All')}</span>
+          <Volume2 className="w-5 h-5 text-emerald-400" />
         </button>
       </div>
 
       {/* Disease Summary Card */}
-      <div className="bg-white border border-[#E1D9C4] rounded-3xl p-4 sm:p-5 text-[#20261F] shadow-sm flex items-center justify-between gap-3">
+      <div className="bg-stone-900 border-2 border-stone-800 rounded-3xl p-4 text-white shadow-xl flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#E4F3EA] border border-[#B7E4C7] flex items-center justify-center text-[#2B6E4F] text-2xl flex-shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-950 border border-emerald-600/40 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0">
             🌱
           </div>
           <div>
-            <div className="text-xs text-[#4C5548] font-semibold">{t(result.cropNameKey)}</div>
-            <div className="font-heading text-base sm:text-lg font-extrabold text-[#173C2D] leading-tight mt-0.5">
+            <div className="text-xs text-stone-400 font-semibold">{t(result.cropNameKey)}</div>
+            <div className="text-sm font-extrabold text-white leading-tight mt-0.5">
               {t(result.labelKey)}
             </div>
           </div>
@@ -118,7 +114,7 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
       </div>
 
       {/* Subtitle */}
-      <div className="px-1 text-xs sm:text-sm text-[#4C5548] font-medium">
+      <div className="px-1 text-xs text-stone-300 font-medium">
         {t('treatmentSub', 'Follow these 3 simple steps to treat your affected crop:')}
       </div>
 
@@ -131,22 +127,22 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
           return (
             <div
               key={step.stepNumber}
-              className="bg-white border border-[#E1D9C4] hover:border-[#2B6E4F]/60 rounded-3xl p-4 sm:p-5 text-[#20261F] shadow-sm hover:shadow-agri flex items-start gap-4 transition-all relative overflow-hidden"
+              className="bg-stone-900/95 border-2 border-stone-800 hover:border-emerald-500/50 rounded-3xl p-4 text-white shadow-xl flex items-start gap-3.5 transition-all relative overflow-hidden group"
             >
               {/* Step Number Badge & Icon */}
               <div className="flex flex-col items-center gap-1 flex-shrink-0">
-                <div className="w-12 h-12 rounded-2xl bg-[#E4F3EA] border border-[#52B788]/40 text-[#2B6E4F] flex items-center justify-center shadow-sm">
-                  <StepIcon className="w-6 h-6 text-[#2B6E4F]" />
+                <div className="w-12 h-12 rounded-2xl bg-emerald-600/20 border-2 border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-md">
+                  <StepIcon className="w-6 h-6 text-emerald-400" />
                 </div>
-                <span className="text-[11px] font-extrabold text-[#8A5A34] font-mono">
+                <span className="text-[11px] font-black text-amber-400 font-mono">
                   #{stepNum}
                 </span>
               </div>
 
               {/* Step Content */}
               <div className="flex-1">
-                <div className="flex items-center justify-between gap-2">
-                  <h4 className="font-heading text-sm sm:text-base font-extrabold text-[#173C2D] leading-snug">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-extrabold text-white leading-snug">
                     {t(step.titleKey)}
                   </h4>
                   {/* Read individual step button */}
@@ -154,13 +150,13 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
                     type="button"
                     onClick={() => handleSpeakSingleStep(step, index)}
                     aria-label="Listen step"
-                    className="touch-target w-8 h-8 rounded-full bg-[#F3ECDA] hover:bg-[#E1D9C4] text-[#2B6E4F] flex items-center justify-center active:scale-95 transition-transform"
+                    className="touch-target w-8 h-8 rounded-full bg-stone-800 text-stone-300 hover:text-emerald-400 flex items-center justify-center active:scale-95"
                   >
                     <Volume2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#4C5548] mt-1.5 leading-relaxed font-medium">
+                <p className="text-xs text-stone-300 mt-1.5 leading-relaxed font-medium">
                   {t(step.descKey)}
                 </p>
               </div>
@@ -177,9 +173,9 @@ export const TreatmentScreen: React.FC<TreatmentScreenProps> = ({
             speechService.playChime('click');
             onOpenExpertModal();
           }}
-          className="w-full min-h-[56px] p-4 rounded-2xl bg-gradient-to-r from-[#2B6E4F] to-[#173C2D] hover:from-[#1F533E] hover:to-[#173C2D] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-md active:scale-[0.98] transition-all border border-[#52B788]/40"
+          className="w-full min-h-[58px] p-4 rounded-3xl bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-xl active:scale-[0.98] transition-all"
         >
-          <PhoneCall className="w-5 h-5 text-[#8EE0B6]" />
+          <PhoneCall className="w-5 h-5" />
           <span>{t('callKvkBtn', '📞 Call Kisan Helpline (1800-180-1551)')}</span>
         </button>
       </div>

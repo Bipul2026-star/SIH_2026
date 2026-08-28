@@ -181,11 +181,11 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
                   {result.issueType === 'disease'
                     ? t('issueTypeDisease', 'Disease Attack')
                     : result.issueType === 'pest'
-                      ? t('issueTypePest', 'Pest Infestation')
-                      : t('issueTypeHealthy', 'Healthy Crop')}
+                    ? t('issueTypePest', 'Pest Infestation')
+                    : t('issueTypeHealthy', 'Healthy Crop')}
                 </span>
                 <span className="text-xs text-[#4C5548] font-mono font-bold bg-[#F3ECDA] px-2 py-0.5 rounded-full">
-                  {t('aiDiagnosisBadge', 'AI DIAGNOSIS')}
+                  AI DIAGNOSIS
                 </span>
               </div>
 
